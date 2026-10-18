@@ -1,53 +1,126 @@
-# Student Absences Management System
+# SAEK – Student Absence Management System
 
-A VB.NET Windows Forms application for managing student absence records with MySQL.
+A desktop application for managing student absences, developed using **VB.NET, Windows Forms, and MySQL**.
 
-## Requirements
-- Windows
-- .NET 9 SDK
-- MySQL server (for example, XAMPP)
-- Database `students_db` with an `absences` table
+## 📌 Overview
 
-## Database schema
-The application expects this table:
+The Student Absence Management System is designed to record, manage, and monitor student absences through a Windows desktop interface connected to a MySQL database.
 
-```sql
-CREATE DATABASE IF NOT EXISTS students_db;
-USE students_db;
+The application provides tools for recording absence details, reviewing records, and monitoring absence-hour limits.
 
-CREATE TABLE IF NOT EXISTS absences (
-    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(255) NOT NULL,
-    hours INT NOT NULL,
-    course_name VARCHAR(255) NOT NULL,
-    absence_date DATE NOT NULL
-);
+## ✨ Features
+
+- **Absence Management** – Register student absences with a student name, course, date, and number of hours.
+- **MySQL Database Integration** – Store and retrieve absence records from a MySQL database.
+- **Calendar Interface** – Select dates and review absence records.
+- **Absence Limit Monitoring** – Display warnings when students approach or exceed configured absence-hour limits.
+- **Records Table** – Load and view absence records in a data grid.
+- **Search by Date** – Filter records using the calendar.
+- **Text File Export** – Save displayed records to a text file.
+- **Average Hours Calculation** – Calculate the average absence hours.
+- **Weekend and Holiday Handling** – Highlight weekends and configured holidays.
+
+## 🛠️ Technologies Used
+
+- **Language:** Visual Basic .NET (VB.NET)
+- **Framework:** .NET 9
+- **User Interface:** Windows Forms
+- **Database:** MySQL
+- **Database Connector:** MySql.Data
+- **Development Environment:** Visual Studio Code
+- **Local Database Environment:** XAMPP / phpMyAdmin
+
+## 📂 Project Structure
+
+```text
+SAEK-Absence-Management-System/
+├── Form1.vb
+├── Form1.Designer.vb
+├── Program.vb
+├── StudentAbsences.vbproj
+├── database_backup.sql
+├── Texniki_Anafora.docx
+├── README.md
+└── .gitignore
 ```
 
-## Configure the database
-The default connection string in `Form1.vb` is configured for a local MySQL server with user `root`, an empty password, and database `students_db`. Change it in `Form1.vb` if your local setup uses different credentials. Do not commit real passwords or secrets.
+## ⚙️ Requirements
 
-## Build
-Open PowerShell in this folder and run:
+Before running the application, make sure you have:
 
-```powershell
+- Windows
+- .NET 9 SDK
+- MySQL Server
+- XAMPP or another MySQL-compatible environment
+- Visual Studio Code or another suitable .NET development environment
+
+## 🚀 Installation and Setup
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/nikolasmarantas9/SAEK-Absence-Management-System.git
+```
+
+Open the downloaded project folder.
+
+### 2. Set up the database
+
+1. Start MySQL using XAMPP or your preferred MySQL environment.
+2. Open phpMyAdmin in your browser.
+3. Import the `database_backup.sql` file.
+4. Confirm that the `students_db` database and its `absences` table have been created.
+
+### 3. Configure the database connection
+
+Open `Form1.vb` and locate the MySQL connection string.
+
+Update the server, username, password, and database settings to match your local MySQL configuration.
+
+### 4. Build the application
+
+Open a terminal in the project folder and run:
+
+```bash
 dotnet restore
 dotnet build
+```
+
+### 5. Run the application
+
+```bash
 dotnet run
 ```
 
-This project targets `net9.0-windows` and uses Windows Forms, so it must be run on Windows.
+The application is a Windows desktop application and requires a compatible Windows environment.
 
-## Features
-- Create absence records with student, course, hours, and date
-- Blocks weekend and future-date entries
-- Warns when total absence hours approach or exceed the configured threshold
-- Lists records from MySQL and displays them in a table
-- Deletes a selected absence from the database after confirmation
-- Deletes all records for a named student after confirmation
-- Exports the currently displayed records to CSV or TXT
-- Displays basic absence statistics
+## 🗄️ Database Structure
 
-## Notes
-- The configured threshold is a simple application rule (`40` warning / `50` maximum) and should be adjusted to match the institution's official policy.
-- Weekend and holiday highlighting is visual; the current validation blocks weekends but does not yet enforce an official holiday calendar.
+The application uses the `students_db` database and the `absences` table.
+
+| Column | Description |
+|---|---|
+| `id` | Unique absence record identifier |
+| `name` | Student name |
+| `hours` | Number of absence hours |
+| `course_name` | Course associated with the absence |
+| `absence_date` | Date of the absence |
+
+## 🔒 Security Notes
+
+- Configure database credentials according to your local environment.
+- Avoid committing real passwords or sensitive information to a public repository.
+- Use an appropriately secured MySQL account for production environments.
+
+## 🎓 Project Purpose
+
+This project was developed as an educational software application to demonstrate desktop application development, database connectivity, data management, and user interface design using VB.NET and MySQL.
+
+## 📄 License
+
+No license has been specified yet. Contact the repository owner before redistributing or reusing this project.
+
+---
+
+**Developed by:** Nikolas Marantas  
+**Repository:** [SAEK-Absence-Management-System](https://github.com/nikolasmarantas9/SAEK-Absence-Management-System)
